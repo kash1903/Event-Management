@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.beans.factory.annotation.Value;
 
 import com.example.eventMangement.model.Client;
 
@@ -15,7 +16,9 @@ import java.util.Map;
 @Controller
 public class RegistrationPageController {
     
-     private static final String REGISTER_API_URL = "http://localhost:8080/api/clients/register";
+    //  private static final String REGISTER_API_URL = "http://localhost:8080/api/clients/register";
+    @Value("${app.base-url-clients}")
+     private static  String REGISTER_API_URL ;
 
     @GetMapping("/register")
     public String showRegisterPage(Model model) {

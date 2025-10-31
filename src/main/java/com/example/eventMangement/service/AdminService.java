@@ -1,12 +1,18 @@
 package com.example.eventMangement.service;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.beans.factory.annotation.Value;
+
 import java.util.*;
 
 @Service
 public class AdminService {
-    private final String BASE_URL = "http://localhost:8080/api/events";
-    private final String STATS_URL = "http://localhost:8080/api/event";
+    // private final String BASE_URL = "http://localhost:8080/api/events";
+    @Value("${app.base-url-events}")
+    private  String BASE_URL;
+    // private final String STATS_URL = "http://localhost:8080/api/event";
+     @Value("${app.base-url-stats}")
+    private  String STATS_URL ;
     private final RestTemplate restTemplate = new RestTemplate();
 
     // ✅ Fetch all events

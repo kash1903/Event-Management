@@ -24,7 +24,8 @@ window.onload = function () {
 
 // ✅ Fetch events posted by this admin
 function fetchAdminEvents() {
-  fetch(`http://localhost:8080/api/events/byAdmin/${window.adminId}`)
+  // fetch(`http://localhost:8080/api/events/byAdmin/${window.adminId}`)
+  fetch(`https://event-management-2h31.onrender.com/api/events/byAdmin/${window.adminId}`)
     .then(res => res.json())
     .then(data => renderEvents(data))
     .catch(err => console.error("Error fetching events:", err));
@@ -72,7 +73,8 @@ function searchEvents() {
     fetchAdminEvents();
     return;
   }
-  fetch(`http://localhost:8080/api/events/search?keyword=${keyword}`)
+  // fetch(`http://localhost:8080/api/events/search?keyword=${keyword}`)
+  fetch(`https://event-management-2h31.onrender.com/api/events/search?keyword=${keyword}`)
     .then(res => res.json())
     .then(data => renderEvents(data))
     .catch(err => console.error(err));
@@ -102,7 +104,9 @@ function submitEvent() {
     return;
   }
 
-  fetch("http://localhost:8080/api/events/create", {
+  // fetch("http://localhost:8080/api/events/create",
+  fetch("https://event-management-2h31.onrender.com/api/events/create",
+     {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(event)
@@ -153,7 +157,9 @@ function updateEvent() {
     description: document.getElementById("editDescription").value.trim(),
   };
 
-  fetch(`http://localhost:8080/api/events/update/${currentEditEventId}`, {
+  // fetch(`http://localhost:8080/api/events/update/${currentEditEventId}`, 
+  fetch(`https://event-management-2h31.onrender.com/api/events/update/${currentEditEventId}`, 
+    {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(updatedEvent)
@@ -176,7 +182,9 @@ function updateEvent() {
 function deleteEvent(eventId) {
   if (!confirm("⚠️ Are you sure you want to delete this event?")) return;
 
-  fetch(`http://localhost:8080/api/events/delete/${eventId}`, {
+  // fetch(`http://localhost:8080/api/events/delete/${eventId}`, 
+  fetch(`https://event-management-2h31.onrender.com/api/events/delete/${eventId}`, 
+    {
     method: "DELETE"
   })
     .then(res => {
@@ -197,7 +205,8 @@ const adminId = 1; // 🔹 You can make this dynamic later if needed
 // 🟢 Load all events of a specific admin into dropdown
 async function loadEventDropdown() {
   try {
-    const response = await fetch(`http://localhost:8080/api/events/byAdmin/${adminId}`);
+    // const response = await fetch(`http://localhost:8080/api/events/byAdmin/${adminId}`);
+    const response = await fetch(`https://event-management-2h31.onrender.com/api/events/byAdmin/${adminId}`);
     const events = await response.json();
 
     // Clear existing options (just in case)
@@ -226,7 +235,8 @@ async function loadEventDropdown() {
 // 🟢 Fetch stats & draw chart
 async function loadEventStats(eventId) {
   try {
-    const response = await fetch(`http://localhost:8080/api/event/${eventId}/stats`);
+    // const response = await fetch(`http://localhost:8080/api/event/${eventId}/stats`);
+    const response = await fetch(`https://event-management-2h31.onrender.com/api/event/${eventId}/stats`);
     const data = await response.json();
 
     if (!data.success) {

@@ -21,7 +21,8 @@ let currentAction = '';
 window.onload = fetchAllEvents;
 
 function fetchAllEvents() {
-    fetch('http://localhost:8080/api/events/all')
+    // fetch('http://localhost:8080/api/events/all')
+    fetch('https://event-management-2h31.onrender.com/api/events/all')
         .then(res => res.json())
         .then(data => renderEvents(data))
         .catch(err => console.error(err));
@@ -51,7 +52,8 @@ function renderEvents(events) {
 
 function searchEvents() {
     const keyword = document.getElementById('searchKeyword').value;
-    fetch(`http://localhost:8080/api/events/search?keyword=${keyword}`)
+    // fetch(`http://localhost:8080/api/events/search?keyword=${keyword}`)
+    fetch(`https://event-management-2h31.onrender.com/api/events/search?keyword=${keyword}`)
         .then(res => res.json())
         .then(data => renderEvents(data))
         .catch(err => console.error(err));
@@ -83,9 +85,11 @@ function submitAction() {
 
     let url = '';
     if (currentAction === 'register') {
-        url = `http://localhost:8080/api/event/${currentEventId}/register?username=${username}&email=${email}`;
+        // url = `http://localhost:8080/api/event/${currentEventId}/register?username=${username}&email=${email}`;
+        url = `https://event-management-2h31.onrender.com/api/event/${currentEventId}/register?username=${username}&email=${email}`;
     } else {
-        url = `http://localhost:8080/api/event/${currentEventId}/attend?username=${username}&email=${email}&feedback=${encodeURIComponent(feedback)}`;
+        // url = `http://localhost:8080/api/event/${currentEventId}/attend?username=${username}&email=${email}&feedback=${encodeURIComponent(feedback)}`;
+        url = `https://event-management-2h31.onrender.com/api/event/${currentEventId}/attend?username=${username}&email=${email}&feedback=${encodeURIComponent(feedback)}`;
     }
 
     fetch(url, { method: 'POST' })
