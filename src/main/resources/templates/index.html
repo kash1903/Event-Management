@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Event Management System</title>
+     
+    <script src="/js/quotes.js" defer></script>
+     <link rel="stylesheet" th:href="@{/css/index.css}">
+
+</head>
+<body>
+    <header>🌟 Event Management System 🌟</header>
+
+    <nav>
+        <a th:href="@{/register}">📝 Register</a>
+        <a th:href="@{/login}">🔐 Login</a>
+    </nav>
+
+      <div class="hero-section">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Welcome to the Event Management System 🎉</h1>
+      <p id="quoteText">Loading inspiration...</p>
+    </div>
+  </div>
+
+  
+
+
+    <footer>© 2025 Event Management System | Crafted with ❤️ by Subramanian</footer>
+
+</body>
+</html>

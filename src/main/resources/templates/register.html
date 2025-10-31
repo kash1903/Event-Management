@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Client Registration</title>
+   
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+</head>
+<body>
+    <a th:href="@{/}" class="backBtn">⬅ Back to Home</a>
+
+    <form th:action="@{/register}" th:object="${client}" method="post">
+        <h2>📝 Register</h2>
+
+        <input type="text" th:field="*{username}" placeholder="Enter Username" required />
+        <input type="email" th:field="*{userEmail}" placeholder="Enter Email" required />
+        <input type="password" th:field="*{password}" placeholder="Enter Password" required />
+        
+        <select th:field="*{role}">
+            <option value="Client">Client</option>
+            <option value="ADMIN">Admin</option>
+        </select>
+
+        <button type="submit">Register</button>
+
+        <p th:text="${message}"></p>
+
+        <div class="login-redirect">
+        <span>Already registered?</span>
+        <a th:href="@{/login}">Login here!</a>
+</div>
+    </form>
+</body>
+</html>

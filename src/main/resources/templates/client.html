@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>🎉 Client Dashboard | Event Management</title>
+  <script src="/js/client.js" defer></script>
+  <link rel="stylesheet" th:href="@{/css/client.css}">
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <span class="logo">🎊 Event Management System</span>
+    </div>
+    <div class="header-right">
+      <div class="user-info">
+        👤 <span id="clientName">Guest</span> | <span id="clientRole">User</span>
+      </div>
+      <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+    </div>
+  </header>
+
+  <section class="search-section">
+    <h2>🔍 Find Your Perfect Event</h2>
+    <div class="search-container">
+      <input type="text" id="searchKeyword" placeholder="Search events by keyword...">
+      <!-- <select id="locationFilter">
+        <option value="">All Locations</option>
+        <option value="Chennai">Chennai</option>
+        <option value="Bangalore">Bangalore</option>
+        <option value="Hyderabad">Hyderabad</option>
+      </select> -->
+      <button onclick="searchEvents()">Search</button>
+    </div>
+  </section>
+
+  <main>
+    <div class="events-container" id="eventsContainer">
+      <!-- Events will appear here -->
+    </div>
+  </main>
+
+  <!-- Event Modal -->
+  <div class="modal" id="eventModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">×</span>
+      <h3 id="modalTitle">Event Registration</h3>
+      <input type="text" id="username" placeholder="Enter your name" class="modal-input">
+      <input type="email" id="email" placeholder="Enter your email" class="modal-input">
+      <textarea id="feedback" placeholder="Feedback (only for attendance)" class="modal-input feedback-box"></textarea>
+      <button id="submitBtn" onclick="submitAction()" class="modal-submit-btn">Submit</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Event Management | Crafted with ❤️ by Subramanian</p>
+  </footer>
+</body>
+</html>

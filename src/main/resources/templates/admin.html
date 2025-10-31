@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard - Event Management</title>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script src="/js/admin.js" defer></script>
+
+  <link rel="stylesheet" th:href="@{/css/admin.css}">
+
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    ⚙️ Admin Dashboard  
+    <div style="font-size:14px;">
+      <p>Welcome, <span id="usernameDisplay"></span> (<span id="roleDisplay"></span>)</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <!-- <input type="text" id="searchKeyword" placeholder="Search events..."> -->
+    <!-- <button onclick="searchEvents()">Search</button> -->
+    <!-- <button onclick="openPostModal()">+ Post Event</button> -->
+    <button onclick="logout()" class="logoutBtn" >Logout</button>
+  </div>
+</header>
+
+
+<!-- 📊 Event Statistics Section -->
+<!-- <div class="card mt-4 p-4" style="max-width: 500px; margin: 0 auto;">
+  <h3 class="text-center mb-3">📈 Event Statistics</h3> -->
+
+  <!-- 🟡 Dropdown for event selection -->
+  <!-- <div class="mb-3 text-center">
+    <label for="eventSelect" style="font-weight:bold;">Select Event:</label>
+    <select id="eventSelect" class="form-select" style="width: 250px; margin: 0 auto;">
+      <option value="">-- Choose Event --</option>
+    </select>
+  </div> -->
+
+  <!-- 🟢 Graph canvas -->
+  <!-- <div style="position: relative; height: 250px; width: 250px; margin: 0 auto;">
+    <canvas id="eventStatsChart"></canvas>
+  </div>
+</div> -->
+
+
+ <!-- graph -->
+
+<!-- <div class="events-container" id="eventsContainer"></div> -->
+
+<!-- new code start -->
+ <!-- 🧭 Main Layout Container -->
+<div class="dashboard-container">
+
+  <!-- 🟩 LEFT SECTION: Search + Post + Events -->
+  <div class="left-section">
+    <div class="action-bar">
+      <input type="text" id="searchKeyword" placeholder="Search events...">
+      <button onclick="searchEvents()" class="searcBtn" style=" background: #3498db;">Search</button>
+      <button onclick="openPostModal()">POST</button>
+    </div>
+
+    <!-- Event Cards -->
+    <div class="events-container" id="eventsContainer"></div>
+  </div>
+
+  <!-- 🟦 RIGHT SECTION: Graph / Stats -->
+  <div class="right-section">
+    <div class="card stats-card">
+      <h3 class="text-center mb-3">📈 Event Statistics</h3>
+      <div class="mb-3 text-center">
+        <label for="eventSelect" style="font-weight:bold;">Select Event:</label>
+        <select id="eventSelect" class="form-select" style="width: 250px; margin: 0 auto;">
+          <option value="">-- Choose Event --</option>
+        </select>
+      </div>
+      <div style="position: relative; height: 250px; width: 250px; margin: 0 auto;">
+        <canvas id="eventStatsChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+ <!-- new code end  -->
+
+
+<!-- Post Event Modal -->
+<div class="modal" id="postModal">
+  <div class="modal-content">
+    <span class="close" onclick="closePostModal()">×</span>
+    <h3>Post New Event</h3>
+    <input type="text" id="eventTitle" placeholder="Event Title">
+    <input type="date" id="date">
+    <input type="text" id="venue" placeholder="Venue">
+    <input type="text" id="speaker" placeholder="Speaker">
+    <textarea id="description" placeholder="Description"></textarea>
+    <button onclick="submitEvent()">Submit</button>
+  </div>
+</div>
+
+<!-- Edit Event Modal -->
+<div class="modal" id="editModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeEditModal()">×</span>
+    <h3>Edit Event</h3>
+    <input type="text" id="editEventTitle" placeholder="Event Title">
+    <input type="date" id="editDate">
+    <input type="text" id="editVenue" placeholder="Venue">
+    <input type="text" id="editSpeaker" placeholder="Speaker">
+    <textarea id="editDescription" placeholder="Description"></textarea>
+    <button onclick="updateEvent()">Update</button>
+  </div>
+</div>
+
+
+
+</body>
+</html>

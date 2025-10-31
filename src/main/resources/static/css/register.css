@@ -1,0 +1,165 @@
+/* 🌟 GLOBAL STYLES */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Poppins, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #74b9ff, #a29bfe, #81ecec);
+    background-size: 300% 300%;
+    animation: gradientMove 8s ease infinite;
+}
+
+/* 🎨 Floating gradient background animation */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 🧾 FORM CARD */
+form {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 40px 35px;
+    border-radius: 20px;
+    width: 360px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    animation: fadeIn 0.8s ease-in-out;
+}
+/* 🔁 LOGIN REDIRECT LINK */
+.login-redirect {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #dfe6e9;
+}
+
+.login-redirect a {
+    /* color: #74b9ff; */
+    color:rgb(108, 92, 231);
+    font-weight: 600;
+    margin-left: 5px;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+.login-redirect a:hover {
+    color: #a29bfe;
+    text-decoration: underline;
+}
+
+
+/* ✨ Entry animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🔤 HEADING */
+h2 {
+    margin-bottom: 25px;
+    color: #fff;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+/* 🧩 INPUT FIELDS */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.25);
+    color: black;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+input:focus, select:focus {
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* 🔘 BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    background: linear-gradient(135deg, #0984e3, #6c5ce7);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #6c5ce7, #0984e3);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ✅ SUCCESS MESSAGE */
+p {
+    margin-top: 15px;
+    color: #dfe6e9;
+    font-weight: 600;
+}
+
+/* ⬅ BACK BUTTON */
+.backBtn {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.backBtn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: #2d3436;
+    transform: scale(1.05);
+}
+
+/* 📱 RESPONSIVE DESIGN */
+@media (max-width: 500px) {
+    form {
+        width: 85%;
+        padding: 30px 20px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .backBtn {
+        top: 15px;
+        left: 15px;
+        font-size: 13px;
+        padding: 8px 15px;
+    }
+}
