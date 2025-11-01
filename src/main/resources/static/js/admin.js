@@ -20,6 +20,7 @@ window.onload = function () {
   window.adminId = adminId;
 
   fetchAdminEvents();
+  loadEventDropdown(); // Added this line
 };
 
 // ✅ Fetch events posted by this admin
@@ -200,12 +201,49 @@ function deleteEvent(eventId) {
 // chart section start
 
 const eventSelect = document.getElementById("eventSelect");
-const adminId = 1; // 🔹 You can make this dynamic later if needed
+// const adminId = 1; // 🔹 You can make this dynamic later if needed
 
 // 🟢 Load all events of a specific admin into dropdown
+
+// async function loadEventDropdown() {
+//   try {
+//     // const response = await fetch(`http://localhost:8080/api/events/byAdmin/${adminId}`);
+//     const response = await fetch(`https://event-management-2h31.onrender.com/api/events/byAdmin/${adminId}`);
+//     const events = await response.json();
+
+//     // Clear existing options (just in case)
+//     eventSelect.innerHTML = '<option value="">-- Choose Event --</option>';
+
+//     // Populate dropdown
+//     events.forEach(event => {
+//       const option = document.createElement("option");
+//       option.value = event.id;
+//       option.textContent = event.eventTitle;
+//       eventSelect.appendChild(option);
+//     });
+
+//     // mod
+//        // 🟢 Automatically show chart for the first event
+//     if (events.length > 0) {
+//       eventSelect.value = events[0].id;
+//       loadEventStats(events[0].id);
+//     }
+//     // mod
+//   } catch (error) {
+//     console.error("Error loading events:", error);
+//   }
+// }
+
+// 01-11-2025 start
 async function loadEventDropdown() {
   try {
-    // const response = await fetch(`http://localhost:8080/api/events/byAdmin/${adminId}`);
+    // Get adminId from window (set in window.onload) or fallback to sessionStorage
+    const adminId = window.adminId || sessionStorage.getItem("adminId");
+    if (!adminId) {
+      console.warn("No adminId available for loading dropdown.");
+      return;
+    }
+
     const response = await fetch(`https://event-management-2h31.onrender.com/api/events/byAdmin/${adminId}`);
     const events = await response.json();
 
@@ -220,17 +258,18 @@ async function loadEventDropdown() {
       eventSelect.appendChild(option);
     });
 
-    // mod
-       // 🟢 Automatically show chart for the first event
+    // 🟢 Automatically show chart for the first event (if any)
     if (events.length > 0) {
       eventSelect.value = events[0].id;
       loadEventStats(events[0].id);
     }
-    // mod
+
   } catch (error) {
     console.error("Error loading events:", error);
   }
 }
+
+// 01-11-2025 end
 
 // 🟢 Fetch stats & draw chart
 async function loadEventStats(eventId) {
