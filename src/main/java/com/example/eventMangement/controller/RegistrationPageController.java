@@ -17,8 +17,9 @@ import java.util.Map;
 public class RegistrationPageController {
     
     //  private static final String REGISTER_API_URL = "http://localhost:8080/api/clients/register";
-    @Value("${app.base-url-clients}")
-     private static  String REGISTER_API_URL ;
+     private static final String REGISTER_API_URL = "https://event-management-2h31.onrender.com/api/clients/register";
+    // @Value("${app.base-url-clients}")
+    //  private static  String REGISTER_API_URL ;
 
     @GetMapping("/register")
     public String showRegisterPage(Model model) {
